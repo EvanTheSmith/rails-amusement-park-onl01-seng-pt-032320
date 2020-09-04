@@ -1,6 +1,6 @@
 class RidesController < ApplicationController
     def create
-      @ride = Ride.create(ride_params)
+      @ride = Ride.find_or_create_by(ride_params)
       flash[:result] = @ride.take_ride
       redirect_to user_path(current_user)
     end
